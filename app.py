@@ -9,8 +9,12 @@ app = Flask(__name__)
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
-if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=4000)
+def get_port():
+    port = os.environ.get("PORT")
+    if not port:
+        port = 4000
+    return port
+
 
 
 @app.route("/")
@@ -202,3 +206,9 @@ def update_file(name):
         return jsonify({'error': str(e),
                         'status': 500,
                         'message': 'Somthing went wrong'})
+
+
+if __name__ == "__main__":
+    print("URLs: ", app.url_map)
+    app.run(debug=True, host='0.0.0.0', port=get_port())
+    
