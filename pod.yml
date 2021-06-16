@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: docker-examples
+  labels:
+    name: docker-examples
+spec:
+  containers:
+  - name: docker-examples
+    image: sanuptpm/docker-examples:latest
+    ports:
+      - containerPort: 4000
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+
