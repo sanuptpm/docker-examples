@@ -16,7 +16,6 @@ def get_port():
     return port
 
 
-
 @app.route("/")
 def hello():
     return "Flask inside Docker!! Hello"
