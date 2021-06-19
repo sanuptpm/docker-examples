@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: docker-examples-replicaset
+spec: 
+  replicas: 5
+  selector:
+    matchLabels:
+      app: docker-examples
+  template:
+    metadata:
+      labels:
+        app: docker-examples
+        tier: frontend
+    spec:
+      containers:
+      - name: docker-examples
+        image: sanuptpm/docker-examples:latest
+        resources:
+          requests:
+            cpu: 236m
+            memory: 100Mi
+        ports:
+        - containerPort: 4000
+

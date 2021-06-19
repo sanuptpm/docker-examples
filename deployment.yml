@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: docker-examples-deployment
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: docker-examples
+  template:
+    metadata:
+      labels:
+        app: docker-examples
+    spec:
+      containers:
+      - name: docker-examples
+        image: sanuptpm/docker-examples:latest
+        resources:
+          requests:
+            cpu: 256m
+            memory: 100Mi
+        ports:
+        - containerPort: 4000 

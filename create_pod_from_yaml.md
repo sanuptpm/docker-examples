@@ -24,14 +24,14 @@ $ minikube status
 # Deploye resource to cluster
 kubectl apply -f pod.yml
 
-# get pods
+# get running pods 
 kubectl get pods
 
 # Get status of pods  
 kubectl describe pods docker-examples
 
 # go inside the pods
-kubectl exec -it <podname> -- bash
+kubectl exec -it <pod-name> -- bash
 
 # show running process
 ps aux
@@ -41,3 +41,22 @@ kubectl get nodes
 
 # List file with there permissions
 ls -l
+
+# Delete pod
+kubectl delete pod <pod-name>
+
+# scales tha application if is overload
+kubectl autoscale replicaset <replicaset-metadata-name> --max=10
+
+# execute replicaset
+kubectl apply -f <replicaset.yml>
+
+# execute horizontal pod auro scalear
+kubectl apply -f <rhorizontalpodautoscaler.yml>
+
+# show all action that alterd the status of deployment
+kubectl rollout history deployment/docker-examples-deployment
+
+# roll back for deployment
+kubectl rollout history deployment/docker-examples-deployment
+

@@ -1,0 +1,11 @@
+apiVersion: autoscaling/v1
+kind : HorizontalPodAutoscaler
+metadata:
+  name: docker-examples-hpa
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    kind: ReplicaSet
+    name: docker-examples-replicaset
+  targetCPUUtilizationPercentage: 80
