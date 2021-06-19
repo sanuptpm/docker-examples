@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: file-manager-service-lb
+spec:
+  type: LoadBalancer
+  selector:
+    app: docker-examples-deployment
+  ports:
+    - protocol: TCP
+      port: 4000
+      targetPort: 4000

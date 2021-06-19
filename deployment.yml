@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: docker-examples-deployment
+  name: file-manager-deployment
 spec:
   strategy:
     type: RollingUpdate
@@ -11,14 +11,14 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: docker-examples
+      app: file-manager
   template:
     metadata:
       labels:
-        app: docker-examples
+        app: file-manager
     spec:
       containers:
-      - name: docker-examples
+      - name: file-manager
         image: sanuptpm/docker-examples:latest
         resources:
           requests:

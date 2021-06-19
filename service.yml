@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: file-manager-service
+spec:
+  selector:
+    app: file-manager
+  ports:
+    - protocol: TCP
+      port: 4000
+      targetPort: 4000
