@@ -1,0 +1,31 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: database-config
+  namespace: default
+data:
+  databaseName: MYDB
+  databasePort: 4000
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: game-server-deployment
+spec:
+    template:
+        spec:
+            containers:
+            - name: server
+              env:
+              - name: DATABASE_NAME
+                valueFrom:
+                    configMapKeyRef:
+                        name: database-config
+                        key: databaseName
+              - name: DATABASE_PORT
+                valueFrom:
+                    configMapKeyRef:
+                        name: database-config
+                        key: databasePort
